@@ -1,0 +1,60 @@
+<div class="card bg-dark text-white">
+    <div class="card-header">{{ titulo }}</div>
+    <div class="card-body">
+        <form #formRegister="ngForm">
+            <div class="form-group row">
+                <label for="nombre" class="col-form-label col-sm-2">Nombre Completo</label>
+                <div class="col-sm-6">
+                    <input type="text " class="form-control" name="nombre" #nombre="ngModel" [(ngModel)]="usuario.nombreCompleto" placeholder="Nombre Competo" ngModel required>
+                    <span *ngIf="!nombre.valid && nombre.touched">El Nombre Es Obligatorio</span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="nombre" class="col-form-label col-sm-2">Profesión</label>
+                <div class="col-sm-6">
+                    <input type="text" name="profesion" #profesion="ngModel" [(ngModel)]="usuario.profesion" placeholder="Profesion" ngModel required>
+                    <span *ngIf="!profesion.valid && profesion.touched">La Profesion Es Obligatoria</span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="nombre" class="col-form-label col-sm-2">Descripción del Servicio</label>
+                <textarea type="text" name="descripcionServicio" #descripcionServicio="ngModel" [(ngModel)]="usuario.descripcionServicio" placeholder="Descripcion Servicio" ngModel required></textarea>
+                <span *ngIf="!descripcionServicio.valid && descripcionServicio.touched">La Profesion Es Obligatoria</span>
+            </div>
+
+            <div class="form-group row">
+                <label for="nombre" class="col-form-label col-sm-2">Usuario</label>
+                <input type="text" name="username" #username="ngModel" [(ngModel)]="usuario.username" placeholder="Usuario" ngModel required>
+                <span *ngIf="!username.valid && username.touched">El Usuario Es Obligatorio</span>
+            </div>
+
+            <div class="form-group row">
+                <label for="nombre" class="col-form-label col-sm-2">Contraseña</label>
+                <input type="password" name="password" #password="ngModel" *ngIf="!usuario.fechaCreacion" [(ngModel)]="usuario.password" placeholder="Password " ngModel required>
+                <!-- <span *ngIf="!password.valid && password.touched">Debe Digitar una Contraseña</span> -->
+            </div>
+            <div class="form-group row">
+                <label for="nombre" class="col-form-label col-sm-2">Foto</label>
+                <div class="col-sm-6">
+                    <button class="btn btn-info" id="selectButton" mat-raised-button (click)="fileInput.click()">Seleccione Imagen</button>
+                    <input #fileInput type="file" hidden multiple (change)="selectFiles($event)" />
+                    <span *ngIf="fileName">{{fileName}}</span>
+                    <button class="btn btn-info" id="uploadButton" mat-raised-button *ngIf="fileName" [disabled]="!fileName" (click)="uploadFiles()">
+                   Subir Archivos
+                  </button>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <button class="btn btn-primary" role="button" (click)='create(formRegister)' [disabled]="!formRegister.form.valid || !usuario.urlFoto" *ngIf="!usuario.fechaCreacion else elseBlock">Crear</button>
+                    <ng-template #elseBlock>
+                        <button class="btn btn-primary" role="button" (click)='update()' [disabled]="!formRegister.form.valid || !usuario.urlFoto">Editar</button>
+                    </ng-template>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

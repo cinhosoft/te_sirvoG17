@@ -1,0 +1,5 @@
+<h1>Usuarios <small>Servicios vários a tu alcance</small></h1>
+<hr>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    <app-usuario-tarjeta (usuarioSeleccionado)="verUsuario( $event )" [usuario]="foo" [index]="i" *ngFor="let foo of usuarios; let i = index"></app-usuario-tarjeta>
+</div>
