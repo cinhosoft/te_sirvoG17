@@ -18,6 +18,7 @@ import { UsuarioComponent } from './components/usuarios/usuario/usuario.componen
 import { UsuarioTarjetaComponent } from './components/usuarios/usuario-tarjeta/usuario-tarjeta.component';
 import { RegisterComponent } from './components/usuarios/register/register.component';
 import { UsuarioFormComponent } from './components/usuarios/usuario-form/usuario-form.component';
+import { LoginComponent } from './components/usuarios/login/login.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { UsuarioFormComponent } from './components/usuarios/usuario-form/usuario
     UsuarioComponent,
     UsuarioTarjetaComponent,
     RegisterComponent,
-    UsuarioFormComponent
+    UsuarioFormComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

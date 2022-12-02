@@ -1,5 +1,5 @@
 export var GLOBAL={
-    url:"http://localhost:9011/",
-    url_files: "http://localhost:9011/file/files/"
+    url:"http://localhost:19011/",
+    url_files: "http://localhost:19011/file/files/"
     
 }

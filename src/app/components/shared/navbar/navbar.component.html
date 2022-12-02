@@ -11,10 +11,21 @@
                     <a class="nav-link active" aria-current="page" routerLink="home" routerLinkActive="active">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="usuarios" routerLinkActive="active">Administrar Usuarios</a>
+                    <a class="nav-link" *ngIf="_usuarioService.esAutenticado()" routerLink="usuarios" routerLinkActive="active">Administrar Usuarios</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" routerLink="about" routerLinkActive="active">Acerca de</a>
+                </li>
+                <li *ngIf="!_usuarioService.esAutenticado()">
+                    <a class="nav-link" [routerLink]="['../usuarios/form']" routerLinkActive="active">Registrar</a>
+                </li>
+
+                <li class="nav-item" style="float:right" *ngIf="!_usuarioService.esAutenticado()">
+                    <a style="float:right" class="nav-link" routerLink="login" routerLinkActive="active">Login</a>
+                </li>
+
+                <li class="nav-item" style="float:right" *ngIf="_usuarioService.esAutenticado()">
+                    <a style="float:right" class="nav-link" (click)="logout()" routerLinkActive="active">Logout</a>
                 </li>
             </ul>
             <form class="d-flex" role="search">
